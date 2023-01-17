@@ -137,4 +137,3 @@ switch (Tag) {
 ```
 >In unserem Beispiel haben wir einer Variabel mit dem Namen "Tag“ den Wert "Montag" zugewiesen. Somit wird der erste case "Montag" ausgeführt. Beim ```default``` ist es so, dass er ausgeführt wird, wenn keins der cases zutreffen.
 
-### Zielsysteme
