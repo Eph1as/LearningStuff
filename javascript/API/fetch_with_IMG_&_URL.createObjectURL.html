@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch with IMG & URL.createObjectURL</title>
+</head>
+<body>
+<img src="" id="rainbow" width="480px" />
+
+
+    <script>
+
+        // Because fetch is async we can use an async function and use the keyword ´await´ which kinda waits for the response to come back
+        // You can also use here ´.catch´ to get an error back
+
+        console.log('about to fetch a rainbow');
+
+
+        catchRainbow()
+        // after the function has done everything THEN it will do (in this case console.log('yay'))
+            .then(response => {
+                console.log('yay');
+            })
+        // if the function has an error it will tell us an error massage in the 
+        // console, but also our individual massage 'error!' to see that we enter the ´.catch´
+        .catch(error => {
+                console.log("error!")
+                console.log(error);
+            });
+
+
+        // Most important part to fetch it
+        async function catchRainbow() {
+            const response = await fetch('rainbow.jpg');
+
+        // Turns the body of what comes back in the HTTP response into a blob
+            const blob = await response.blob();
+            document.getElementById('rainbow').src = URL.createObjectURL(blob);
+
+        }
+
+
+
+
+        // Same function just diffrent way to type it.
+        /*
+        console.log('about to fetch a rainbow');
+        fetch('rainbow.jpg')
+            .then(response => {
+                console.log(response);
+                return response.blob();
+            })
+            // same as above
+            .then(blob => {
+                console.log(blob)
+                document.getElementById('rainbow').src = URL.createObjectURL(blob);
+            })
+            // same as above
+            .catch(error => {
+                console.log("error!")
+                console.log(error);
+            }) */
+    </script>
+
+
+
+</body>
+</html>

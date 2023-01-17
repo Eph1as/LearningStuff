@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch with JSON & textContent</title>
+</head>
+<body>
+
+<p>
+ Do: <span id="text"></span> <br>
+</p>
+
+
+<script>
+
+    const url = 'https://www.boredapi.com/api/activity'
+    async function get_info () {
+        const response = await fetch(url);
+        const data = await response.json();
+        const {activity} = data;
+        document.getElementById("text").textContent = activity;
+    }
+
+    get_info();
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    /* fetch(API_key)
+    .then(res => res.json())
+        .then(data => myFunction(data))
+        
+        const test = data.activity
+        function myFunction(data) {
+            console.log(test)
+        
+        }
+        myFunction(); */
+
+    </script>
+</body>
+</html>
